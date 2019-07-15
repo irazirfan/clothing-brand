@@ -1,5 +1,5 @@
 var express = require('express');
-var db		= require.main.require('./models/db');
+var user = require.main.require('./models/user-model');
 var router = express.Router();
 
 
@@ -8,15 +8,23 @@ router.get('/', function(req, res){
 });
 
 router.post('/', function(req, res){
-	
-	var sql = "select * from user where email='"+req.body.email+"' and password='"+req.body.password+"'";
-	db.getResult(sql, function(results){
+	var data = {
+		email: req.body.email,
+		password: req.body.password,
+	};
+	user.validate(data, (result)=> {
+		if(result.length>0){
+			req.session.email = result[0].email;
+			req.session.name = result[0].name;
+			req.session.user_type = result[0].user_type;
 
-		if(results.length > 0){
-			req.session.email = req.body.email;
-			res.redirect('/admin');
-		}else{
-			res.send('invalid email/password...');
+			if(result[0].user_type === 'admin')
+				res.redirect('/admin');
+			else
+				res.redirect('/customer');
+		}
+		else {
+			res.send("Invalid email/password");
 		}
 	});
 });

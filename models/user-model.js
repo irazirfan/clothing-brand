@@ -8,6 +8,13 @@ module.exports = {
 			callback(result);
 		});
 	},
+	validate: function(user, callback){
+		var sql = "select * from user where email='"+user.email+"' and password= '"+user.password+"' ";
+		db.getResult(sql, function(result){
+			callback(result);
+		});
+	},
+
 	getAll: function(callback){
 
 		var sql = "select * from user";

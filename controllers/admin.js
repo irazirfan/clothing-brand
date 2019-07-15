@@ -5,7 +5,10 @@ var router = express.Router();
 
 router.get('*', function(req, res, next){
 	if(req.session.email != null){
-		next();
+		if(req.session.user_type === 'admin')
+			next();
+		else
+			res.redirect('/customer');
 	}else{
 		res.redirect('/login');
 	}

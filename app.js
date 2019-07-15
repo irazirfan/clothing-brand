@@ -7,6 +7,7 @@ var cookieParser 	= require('cookie-parser');
 var login 			= require('./controllers/login');
 var logout 			= require('./controllers/logout');
 var admin 			= require('./controllers/admin');
+var customer        = require('./controllers/customer');
 var app 			= express();
 
 
@@ -18,10 +19,14 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({'extended': false}));
 app.use(expressSession({secret: 'my top secret password', saveUninitialized: true, resave: false}));
 app.use(cookieParser());
+app.use(function(req, res, next) {
+	res.locals.name = req.session.name;
+	next();
+});
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/admin', admin);
-
+app.use('/customer', customer);
 
 
 //ROUTING
@@ -31,7 +36,7 @@ app.get('/', function(req, res){
 
 
 app.get('/setcookie', function(req, res){
-	res.cookie('my_cookie', 'sdhdgshjdbahdbahjsdbshbd');
+	res.cookie('my_cookie', 'xyxyxyxyxyxxy');
 	res.send('done!');
 });
 
@@ -53,6 +58,6 @@ app.get('/rmcookie', function(req, res){
 //SERVER STARTUP
 app.listen(3000, function(){
 	console.log('Server started at 3000....');
-})
+});
 
 
