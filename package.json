@@ -1,0 +1,27 @@
+{
+  "name": "clothing-brand",
+  "version": "1.0.0",
+  "description": "a mini project in node js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irazirfan/clothing-brand.git"
+  },
+  "author": "Iraz Irfan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/irazirfan/clothing-brand/issues"
+  },
+  "homepage": "https://github.com/irazirfan/clothing-brand#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "express-validator": "^6.1.1",
+    "mysql": "^2.17.1"
+  }
+}
