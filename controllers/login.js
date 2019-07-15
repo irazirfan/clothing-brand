@@ -14,6 +14,7 @@ router.post('/', function(req, res){
 	};
 	user.validate(data, (result)=> {
 		if(result.length>0){
+			req.session.id = result[0].id;
 			req.session.email = result[0].email;
 			req.session.name = result[0].name;
 			req.session.user_type = result[0].user_type;

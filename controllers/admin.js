@@ -36,7 +36,7 @@ router.post('/edit/:id', function(req, res){
 		email: req.body.email,
 		password: req.body.password,
 		name: req.body.name,
-	}
+	};
 	user.update(data, function(status){
 		if(status){
 			res.redirect('/admin/user_list');
@@ -56,7 +56,7 @@ router.post('/add', function(req, res){
 		password: req.body.password,
 		name: req.body.name,
 		user_type: req.body.user_type
-	}
+	};
 	user.insert(data, function(status){
 		if(status){
 			res.redirect('/admin/user_list');
@@ -71,7 +71,7 @@ router.post('/add', function(req, res){
 router.get('/delete/:id', function(req, res){
 	var data = {
 		id: req.params.id,
-	}
+	};
 	user.delete(data, function(status){
 		if(status){
 			res.redirect('/admin/user_list');

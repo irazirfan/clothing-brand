@@ -8,6 +8,7 @@ var login 			= require('./controllers/login');
 var logout 			= require('./controllers/logout');
 var admin 			= require('./controllers/admin');
 var customer        = require('./controllers/customer');
+var profile         = require('./controllers/profile');
 var app 			= express();
 
 
@@ -21,12 +22,15 @@ app.use(expressSession({secret: 'my top secret password', saveUninitialized: tru
 app.use(cookieParser());
 app.use(function(req, res, next) {
 	res.locals.name = req.session.name;
+	res.locals.user_type = req.session.user_type;
+	res.locals.id = req.session.id;
 	next();
 });
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/admin', admin);
 app.use('/customer', customer);
+app.use('/profile', profile);
 
 
 //ROUTING

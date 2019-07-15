@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Profile</title>
+</head>
+<body>
+<h1>Edit Profile</h1>
+
+<a href="/<%=locals.user_type%>">Back</a> |
+<a href="/logout">Logout</a>
+
+<form method="post">
+    <table>
+        <tr>
+            <td>Id: </td>
+            <td><%=user.id%></td>
+        </tr>
+        <tr>
+            <td>Email: </td>
+            <td><%=user.email%></td>
+        </tr>
+        <tr>
+            <td>Password: </td>
+            <td><input type="password" name="password" value="<%=user.password%>"> </td>
+        </tr>
+        <tr>
+            <td>Name: </td>
+            <td><input type="text" name="name" value="<%=user.name%>"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" name="submit" value="Submit"> </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
