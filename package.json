@@ -7,15 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/irazirfan/clothing-brand.git"
+    "type": "",
+    "url": ""
   },
   "author": "Iraz Irfan",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/irazirfan/clothing-brand/issues"
-  },
-  "homepage": "https://github.com/irazirfan/clothing-brand#readme",
+  "homepage": "",
   "dependencies": {
     "cookie-parser": "^1.4.4",
     "ejs": "^2.6.2",
