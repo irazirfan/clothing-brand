@@ -4,6 +4,7 @@ var ejs 			= require('ejs');
 var bodyParser 		= require('body-parser');
 var expressSession 	= require('express-session');
 var cookieParser 	= require('cookie-parser');
+var home            =require('./controllers/home');
 var login 			= require('./controllers/login');
 var logout 			= require('./controllers/logout');
 var admin 			= require('./controllers/admin');
@@ -26,6 +27,7 @@ app.use(function(req, res, next) {
 	res.locals.id = req.session.id;
 	next();
 });
+app.use('/home', home);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/admin', admin);
@@ -35,7 +37,7 @@ app.use('/profile', profile);
 
 //ROUTING
 app.get('/', function(req, res){
-	res.redirect('/login');
+	res.redirect('/home');
 });
 
 

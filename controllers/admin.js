@@ -55,7 +55,7 @@ router.post('/add', function(req, res){
 		email: req.body.email,
 		password: req.body.password,
 		name: req.body.name,
-		user_type: req.body.user_type
+		user_type: 'admin',
 	};
 	user.insert(data, function(status){
 		if(status){
@@ -66,7 +66,6 @@ router.post('/add', function(req, res){
 	});
 
 });
-
 
 router.get('/delete/:id', function(req, res){
 	var data = {

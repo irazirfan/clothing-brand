@@ -3,6 +3,27 @@ var user = require.main.require('./models/user-model');
 var router = express.Router();
 
 
+router.get('/signup', function(req, res){
+    res.render('customer/signup');
+});
+
+router.post('/signup', function(req, res){
+    var data = {
+        email: req.body.email,
+        password: req.body.password,
+        name: req.body.name,
+        user_type: 'customer',
+    };
+    user.insert(data, function(status){
+        if(status){
+            res.redirect('/login');
+        }else{
+            res.redirect('/customer/signup');
+        }
+    });
+
+});
+
 router.get('*', function(req, res, next){
     if(req.session.email != null){
         if(req.session.user_type === 'customer')
