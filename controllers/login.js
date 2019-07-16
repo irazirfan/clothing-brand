@@ -21,8 +21,10 @@ router.post('/', function(req, res){
 
 			if(result[0].user_type === 'admin')
 				res.redirect('/admin');
-			else
+			else {
+				req.session.cart = 0;
 				res.redirect('/customer');
+			}
 		}
 		else {
 			res.send("Invalid email/password");

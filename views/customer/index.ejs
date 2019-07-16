@@ -6,9 +6,34 @@
     <h1>Home Page</h1>
     <p>Welcome home,&nbsp;<a href="/profile"><%= locals.name %></a>  </p>
 
-    <a href="/admin/add">Add New User</a> |
-    <a href="/admin/user_list">User List</a> |
+    <a href="/customer/category">Category</a>
+    <a href="/customer/cart">Cart</a>
     <a href="/logout">Logout</a>
+
+
+
+    <table border="1">
+        <tr>
+            <td>Name</td>
+            <td>Category</td>
+            <td>Price</td>
+            <td>Action</td>
+        </tr>
+
+        <% for(var i=0; i < productList.length; i++){ %>
+
+            <tr>
+                <td><%= productList[i].name %></td>
+                <td><%= productList[i].category %></td>
+                <td><%= productList[i].price %></td>
+                <td>
+                    <a href="/customer/cart/<%= productList[i].id %>">Add to Cart</a>
+                </td>
+            </tr>
+
+        <% } %>
+    </table>
+
 
 </body>
 </html>

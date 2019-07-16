@@ -1,0 +1,26 @@
+
+<table border="1">
+    <tr>
+        <td>name</td>
+        <td>category</td>
+        <td>price</td>
+        <td>Action</td>
+    </tr>
+
+    <% for(var i=0; i < cartList.length; i++){ %>
+
+        <tr>
+            <td><%= cartList[i].name %></td>
+            <td><%= cartList[i].category %></td>
+            <td><%= cartList[i].price %></td>
+            <td>
+                <a href="/customer/cart-delete/<%= cartList[i].id %>">DELETE</a>
+            </td>
+        </tr>
+
+    <% } %>
+</table>
+
+<div>
+    <a href="/customer/order">Checkout</a>
+</div>

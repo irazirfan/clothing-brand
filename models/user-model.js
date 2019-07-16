@@ -16,6 +16,13 @@ module.exports = {
 		});
 	},
 
+	getProductById: function(id, callback){
+		var sql = "select * from product where id="+id;
+		db.getResult(sql, function(result){
+			callback(result);
+		});
+	},
+
 	validate: function(user, callback){
 		var sql = "select * from user where email='"+user.email+"' and password= '"+user.password+"' ";
 		db.getResult(sql, function(result){
@@ -30,12 +37,37 @@ module.exports = {
 			callback(results);
 		});
 	},
+
+	getAllProduct: function(callback){
+
+		var sql = "select * from product";
+		db.getResult(sql, function(results){
+			callback(results);
+		});
+	},
+
+	getAllCart: function(cart ,callback){
+
+		var sql = "select * from cart order by id desc limit "+cart;
+		db.getResult(sql, function(results){
+			callback(results);
+		});
+	},
+
 	insert: function(user, callback){
 		var sql = "insert into user values ('', '"+user.email+"','"+user.password+"', '"+user.name+"', '"+user.user_type+"')";
 		db.execute(sql, function(status){
 			callback(status);
 		});
 	},
+
+	insertCart: function(user, callback){
+		var sql = "insert into cart values ('', '"+user.name+"','"+user.category+"', '"+user.price+"')";
+		db.execute(sql, function(status){
+			callback(status);
+		});
+	},
+
 	update: function(user, callback){
 		var sql = "update user set email='"+user.email+"', password='"+user.password+"', name='"+user.name+"' where id="+user.id;
 		db.execute(sql, function(status){
@@ -53,7 +85,15 @@ module.exports = {
 	delete: function(user, callback){
 		var sql = "delete from user where id="+user.id;
 		db.execute(sql, function(status){
-			callback(status)
+			callback(status);
 		});
-	}
+	},
+
+	deleteFromCart: function(id, callback){
+		var sql = "delete from cart where id="+id;
+		db.execute(sql, function(status){
+			callback(status);
+		});
+	},
+
 };
