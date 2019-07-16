@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit page</title>
+</head>
+<body>
+<h1>Edit Product</h1>
+
+<a href="/admin/productList">Back</a> |
+<a href="/logout">Logout</a>
+
+<form method="post">
+    <table>
+        <tr>
+            <td>Id: </td>
+            <td><%=product.id%></td>
+        </tr>
+        <tr>
+            <td>name: </td>
+            <td><input type="text" name="name" value="<%=product.name%>"></td>
+        </tr>
+        <tr>
+            <td>Category: </td>
+            <td><input type="text" name="category" value="<%=product.category%>"> </td>
+        </tr>
+        <tr>
+            <td>Price: </td>
+            <td><input type="text" name="price" value="<%=product.price%>"></td>
+        </tr>
+        <tr>
+            <td>Quantity: </td>
+            <td><input type="number" name="quantity" value="<%=product.quantity%>"></td>
+        </tr>
+        <tr>
+            <td>Preference: </td>
+            <td>
+                <select class="form-group" name="preference" id="preference">
+                    <option type="text" value="<%= product.preference %>"><%= product.preference %></option>
+                    <option type="text" value="">Select Preference</option>
+                    <option type="text" value="male">male</option>
+                    <option type="text" value="female">female</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Description: </td>
+            <td><input type="text" name="description" value="<%= product.description%>"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" name="submit" value="Update"> </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

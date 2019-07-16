@@ -64,7 +64,6 @@ router.post('/add', function(req, res){
 			res.redirect('/admin/add');
 		}
 	});
-
 });
 
 router.get('/delete/:id', function(req, res){
@@ -79,5 +78,73 @@ router.get('/delete/:id', function(req, res){
 		}
 	});
 });
+
+router.get('/productList', function(req, res){
+	user.getAllProduct(function(results){
+		res.render('admin/productList', {productList: results});
+	});
+});
+
+router.get('/add-product', function(req, res){
+	res.render('admin/add-product');
+});
+
+router.post('/add-product', function(req, res){
+	var data = {
+		name: req.body.name,
+		category: req.body.category,
+		price: req.body.price,
+		quantity: req.body.quantity,
+		preference: req.body.preference,
+		description: req.body.description,
+	};
+	user.insertProduct(data,function(status){
+		if(status){
+			res.redirect('/admin/productList');
+		}else{
+			res.redirect('/admin/add-product');
+		}
+	});
+});
+
+
+router.get('/edit-product/:id', function(req, res){
+	var id = req.params.id;
+	user.getProductById(id, function(result){
+		res.render('admin/edit-product', {product: result[0]});
+	});
+});
+
+router.post('/edit-product/:id', function(req, res){
+	var data = {
+		id: req.params.id,
+		name: req.body.name,
+		category: req.body.category,
+		price: req.body.price,
+		quantity: req.body.quantity,
+		preference: req.body.preference,
+		description: req.body.description,
+	};
+	user.updateProduct(data, function(status){
+		if(status){
+			res.redirect('/admin/productList');
+		}else{
+			res.redirect('/admin/edit-product/'+req.params.id);
+		}
+	});
+});
+
+router.get('/delete-product/:id', function(req, res){
+	var id = req.params.id;
+
+	user.deleteProduct(id, function(status){
+		if(status){
+			res.redirect('/admin/productList');
+		}else{
+			res.redirect('/admin/productList');
+		}
+	});
+});
+
 
 module.exports = router;

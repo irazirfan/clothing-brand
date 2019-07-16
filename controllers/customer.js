@@ -21,7 +21,6 @@ router.post('/signup', function(req, res){
             res.redirect('/customer/signup');
         }
     });
-
 });
 
 router.get('*', function(req, res, next){

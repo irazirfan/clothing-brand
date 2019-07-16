@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add page</title>
+</head>
+<body>
+<h1>Add Product</h1>
+
+<a href="/admin">Home</a> |
+<a href="/logout">Logout</a>
+
+<form method="post">
+    <table>
+        <tr>
+            <td>Name: </td>
+            <td><input type="text" name="name" placeholder="Product Name"></td>
+        </tr>
+        <tr>
+            <td>Category: </td>
+            <td><input type="text" name="category" placeholder="Category"> </td>
+        </tr>
+        <tr>
+            <td>Price: </td>
+            <td><input type="text" name="price" placeholder="Price"></td>
+        </tr>
+        <tr>
+            <td>Quantity: </td>
+            <td><input type="number" name="quantity" placeholder="Quantity"></td>
+        </tr>
+        <tr>
+            <td>Preference: </td>
+            <td>
+                <select class="form-group" name="preference" id="preference">
+                <option type="text" value="">Select Preference</option>
+                <option type="text" value="male">male</option>
+                <option type="text" value="female">female</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Description: </td>
+            <td><input type="text" name="description" placeholder="Description"> </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" name="submit" value="Add"> </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
