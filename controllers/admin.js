@@ -51,17 +51,28 @@ router.get('/add', function(req, res){
 });
 
 router.post('/add', function(req, res){
+
 	var data = {
 		email: req.body.email,
-		password: req.body.password,
-		name: req.body.name,
-		user_type: 'admin',
 	};
-	user.insert(data, function(status){
-		if(status){
-			res.redirect('/admin/user_list');
-		}else{
-			res.redirect('/admin/add');
+	user.getByEmail(data, function (results) {
+		if (results.length > 0) {
+			res.render('admin/add', {page: 'SignUp', menuId: 'signup', email_exist: 'yes'});
+		}
+		else {
+			var data = {
+				email: req.body.email,
+				password: req.body.password,
+				name: req.body.name,
+				user_type: 'admin',
+			};
+			user.insert(data, function(status){
+				if(status){
+					res.redirect('/admin/user_list');
+				}else{
+					res.render('admin/add', {page: 'SignUp', menuId: 'signup', email_exist: 'no'});
+				}
+			});
 		}
 	});
 });

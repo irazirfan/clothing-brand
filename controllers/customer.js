@@ -7,7 +7,7 @@ router.get('/signup', function(req, res){
     res.render('customer/signup');
 });
 
-router.post('/signup', function(req, res){
+router.post('/signup', function(req, res) {
 
         req.checkBody('name', '*Name field cannot be empty!').notEmpty();
         req.checkBody('email', '*Email field cannot be empty!').notEmpty();
@@ -20,27 +20,34 @@ router.post('/signup', function(req, res){
         if (err) {
             res.render('customer/signup', {page: 'SignUp', menuId: 'signup', errors: err});
         }
-        else{
-            if (req.body.password !== req.body.confirm_password)
-                res.render('customer/signup', {page: 'SignUp', menuId: 'signup', pass_mismatch: 'yes'});
-            else {
+        var data = {
+            email: req.body.email,
+        };
+        user.getByEmail(data, function (results) {
+            if (results.length > 0) {
+                res.render('customer/signup', {page: 'SignUp', menuId: 'signup', email_exist: 'yes'});
+            } else {
+                if (req.body.password !== req.body.confirm_password)
+                    res.render('customer/signup', {page: 'SignUp', menuId: 'signup', pass_mismatch: 'yes'});
 
-                var data = {
-                    email: req.body.email,
-                    password: req.body.password,
-                    name: req.body.name,
-                    user_type: 'customer',
-                };
-                user.insert(data, function (status) {
-                    if (status) {
-                        res.redirect('/login');
-                    } else {
-                        res.redirect('/customer/signup');
-                    }
-                });
+                else {
+
+                    var data = {
+                        email: req.body.email,
+                        password: req.body.password,
+                        name: req.body.name,
+                        user_type: 'customer',
+                    };
+                    user.insert(data, function (status) {
+                        if (status) {
+                            res.redirect('/login');
+                        } else {
+                            res.redirect('/customer/signup');
+                        }
+                    });
+                }
             }
-        }
-
+        });
     }
 );
 
@@ -100,6 +107,14 @@ router.get('/cart-delete/:id', function(req, res){
         req.session.cart = cart;
         res.redirect('/customer/cart');
     });
+});
+
+router.get('/checkout/:id', function(req, res){
+    var cart =  req.session.cart;
+    if(cart!=null)
+        res.redirect('/customer/checkout');
+    else
+        req.send("Your cart is empty");
 });
 
 router.get('/category', function(req, res){
