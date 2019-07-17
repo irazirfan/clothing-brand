@@ -81,6 +81,24 @@ router.get('/cart-delete/:id', function(req, res){
     });
 });
 
+router.get('/category', function(req, res){
+    user.getProductCategories(function(results){
+        res.render('customer/category', {categoryList: results});
+    });
+});
+
+router.get('/male-product', function(req, res){
+    user.getProductByMale(function(results){
+        res.render('customer/male-product', {productList: results});
+    });
+});
+
+router.get('/female-product', function(req, res){
+    user.getProductByFemale(function(results){
+        res.render('customer/female-product', {productList: results});
+    });
+});
+
 
 
 module.exports = router;
