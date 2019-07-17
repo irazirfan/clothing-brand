@@ -1,16 +1,17 @@
 //DEC
-var express 		= require('express');
-var ejs 			= require('ejs');
-var bodyParser 		= require('body-parser');
-var expressSession 	= require('express-session');
-var cookieParser 	= require('cookie-parser');
-var home            =require('./controllers/home');
-var login 			= require('./controllers/login');
-var logout 			= require('./controllers/logout');
-var admin 			= require('./controllers/admin');
-var customer        = require('./controllers/customer');
-var profile         = require('./controllers/profile');
-var app 			= express();
+var express 		 = require('express');
+var ejs 			 = require('ejs');
+var bodyParser 		 = require('body-parser');
+var expressSession 	 = require('express-session');
+var cookieParser 	 = require('cookie-parser');
+var exValidator 	 = require('express-validator');
+var home             = require('./controllers/home');
+var login 			 = require('./controllers/login');
+var logout 			 = require('./controllers/logout');
+var admin 			 = require('./controllers/admin');
+var customer         = require('./controllers/customer');
+var profile          = require('./controllers/profile');
+var app 			 = express();
 
 
 //CONFIG
@@ -21,6 +22,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({'extended': false}));
 app.use(expressSession({secret: 'my top secret password', saveUninitialized: true, resave: false}));
 app.use(cookieParser());
+app.use(exValidator());
 app.use(function(req, res, next) {
 	res.locals.name = req.session.name;
 	res.locals.user_type = req.session.user_type;

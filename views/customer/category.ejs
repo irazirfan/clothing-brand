@@ -11,12 +11,12 @@
 
 <br/><br/>
 <h3>By Preference</h3>
-<a href="/customer/male-product">Male</a>
-<a href="/customer/female-product">Female</a>
+<a href="/customer/male-product">Men</a>
+<a href="/customer/female-product">Women</a>
 
 <h3>By Category</h3>
 <% for(var i=0; i < categoryList.length; i++){ %>
-<a href="<%=categoryList[i].category%>"><%=categoryList[i].category%></a> <br>
+<a href="/customer/productByCategory/<%=categoryList[i].category%>"><%=categoryList[i].category%></a> <br>
 <% } %>
 
 </body>

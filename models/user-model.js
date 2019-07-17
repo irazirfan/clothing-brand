@@ -23,17 +23,26 @@ module.exports = {
 		});
 	},
 
-	getProductByMale: function(preference, callback){
-		var sql = "select * from product where preference='"+preference;
+	getProductByCategory: function(category, callback){
+		var sql = "select * from product where category='"+category+"' ";
 		db.getResult(sql, function(result){
 			callback(result);
 		});
 	},
 
-	getProductByFemale: function(preference, callback){
-		var sql = "select * from product where preference='"+preference;
-		db.getResult(sql, function(result){
-			callback(result);
+	getProductByMale: function(callback){
+
+		var sql = "select * from product where preference='male' ";
+		db.getResult(sql, function(results){
+			callback(results);
+		});
+	},
+
+	getProductByFemale: function(callback){
+
+		var sql = "select * from product where preference='female' ";
+		db.getResult(sql, function(results){
+			callback(results);
 		});
 	},
 

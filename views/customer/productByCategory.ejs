@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>Home page</title>
+</head>
+<body>
+<h1>Home Page</h1>
+<p>Welcome home,&nbsp;<a href="/profile"><%= locals.name %></a>  </p>
+
+<a href="/customer/category">Product Category</a> |
+<a href="/customer/cart">Cart</a> |
+<a  href="/logout">Logout</a>
+
+<h3>Products By Category</h3>
+<table border="1">
+    <tr>
+        <td>Name</td>
+        <td>Category/Preference</td>
+        <td>Price</td>
+        <td>Action</td>
+    </tr>
+
+    <% for(var i=0; i < productList.length; i++){ %>
+
+        <tr>
+            <td><%= productList[i].name %></td>
+            <td><%= productList[i].category %></td>
+            <td><%= productList[i].price %></td>
+            <td>
+                <a href="/customer/cart/<%= productList[i].id %>">Add to Cart</a>
+            </td>
+        </tr>
+
+    <% } %>
+</table>
+
+</body>
+</html>

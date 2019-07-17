@@ -8,20 +8,41 @@ router.get('/signup', function(req, res){
 });
 
 router.post('/signup', function(req, res){
-    var data = {
-        email: req.body.email,
-        password: req.body.password,
-        name: req.body.name,
-        user_type: 'customer',
-    };
-    user.insert(data, function(status){
-        if(status){
-            res.redirect('/login');
-        }else{
-            res.redirect('/customer/signup');
+
+        req.checkBody('name', '*Name field cannot be empty!').notEmpty();
+        req.checkBody('email', '*Email field cannot be empty!').notEmpty();
+        req.checkBody('email', '*Please enter a valid email!').isEmail();
+        req.checkBody('password', '*Password field cannot be empty!').notEmpty();
+        req.checkBody('confirm_password', '*Confirm Password field cannot be empty!').notEmpty();
+
+        const err = req.validationErrors();
+
+        if (err) {
+            res.render('customer/signup', {page: 'SignUp', menuId: 'signup', errors: err});
         }
-    });
-});
+        else{
+            if (req.body.password !== req.body.confirm_password)
+                res.render('customer/signup', {page: 'SignUp', menuId: 'signup', pass_mismatch: 'yes'});
+            else {
+
+                var data = {
+                    email: req.body.email,
+                    password: req.body.password,
+                    name: req.body.name,
+                    user_type: 'customer',
+                };
+                user.insert(data, function (status) {
+                    if (status) {
+                        res.redirect('/login');
+                    } else {
+                        res.redirect('/customer/signup');
+                    }
+                });
+            }
+        }
+
+    }
+);
 
 router.get('*', function(req, res, next){
     if(req.session.email != null){
@@ -99,6 +120,11 @@ router.get('/female-product', function(req, res){
     });
 });
 
-
+router.get('/productByCategory/:id', function(req, res){
+    var id = req.params.id;
+    user.getProductByCategory(id, function(result){
+        res.render('customer/productByCategory', {productList: result});
+    });
+});
 
 module.exports = router;
