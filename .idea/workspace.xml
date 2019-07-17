@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bdd522e7-2d51-4023-b460-26b1613156b0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/customer.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/customer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/admin/add.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin/add.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/customer/category.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/customer/category.ejs" afterDir="false" />
-    </list>
+    <list default="true" id="bdd522e7-2d51-4023-b460-26b1613156b0" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -130,7 +124,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="85" />
     <option name="y" value="25" />
     <option name="width" value="1750" />
@@ -233,16 +227,15 @@
       <workItem from="1563316875898" duration="1270000" />
       <workItem from="1563319432906" duration="9954000" />
       <workItem from="1563330532748" duration="1401000" />
-      <workItem from="1563343719735" duration="2617000" />
+      <workItem from="1563343719735" duration="2805000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47960000" />
+    <option name="totallyTimeSpent" value="48148000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="npm" order="1" side_tool="true" />

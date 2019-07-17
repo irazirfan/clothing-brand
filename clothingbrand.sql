@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2019 at 10:15 PM
+-- Generation Time: Jul 17, 2019 at 09:27 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -35,13 +35,6 @@ CREATE TABLE `cart` (
   `price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`id`, `name`, `category`, `price`) VALUES
-(17, 'Classic T-shirt', 'Clothes', 200);
-
 -- --------------------------------------------------------
 
 --
@@ -55,7 +48,7 @@ CREATE TABLE `product` (
   `price` float NOT NULL,
   `quantity` int(11) NOT NULL,
   `preference` varchar(10) NOT NULL,
-  `description` varchar(200) DEFAULT NULL
+  `description` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -63,8 +56,13 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `category`, `price`, `quantity`, `preference`, `description`) VALUES
-(1, 'Classic T-shirt', 'Clothes', 200, 10, 'male', NULL),
-(2, 'Oxford Shoes', 'shoes', 900, 5, 'male', NULL);
+(1, 'Classic T-shirt', 't-shirt', 200, 10, 'male', 'size: M'),
+(2, 'Oxford Shoes', 'shoes', 900, 5, 'female', 'size: 6'),
+(9, 'Blue Jean', 'Jeans', 799, 9, 'female', 'size: 24'),
+(10, 'White T-Shirt', 't-shirt', 350, 5, 'male', 'size: L'),
+(11, 'Purse Bag', 'Bag', 1850, 4, 'female', 'size: small'),
+(12, 'Cambridge Shoes', 'shoes', 990, 10, 'male', 'Size: 7'),
+(13, 'Exported Full Shirt', 'Full-Shirt', 2500, 2, 'male', 'Size: L/XL');
 
 -- --------------------------------------------------------
 
@@ -86,7 +84,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `email`, `password`, `name`, `user_type`) VALUES
 (1, 'irazirfan@gmail.com', '123', 'Iraz Irfan', 'admin'),
-(3, 'alamin@aiub.edu', '123', 'Md. Al-Amin', 'customer');
+(3, 'alamin@aiub.edu', '123', 'Md. Al-Amin', 'customer'),
+(7, 'badhan@gmail.com', '123', 'Badhon', 'customer');
 
 --
 -- Indexes for dumped tables
@@ -119,19 +118,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
