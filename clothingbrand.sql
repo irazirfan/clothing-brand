@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2019 at 09:27 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.4
+-- Generation Time: Sep 20, 2024 at 05:04 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -33,7 +32,19 @@ CREATE TABLE `cart` (
   `name` varchar(150) NOT NULL,
   `category` varchar(100) NOT NULL,
   `price` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `name`, `category`, `price`) VALUES
+(1, 'Exported Full Shirt', 'Full-Shirt', 2530),
+(2, 'Cambridge Shoes', 'shoes', 990),
+(4, 'Blue Jean', 'Jeans', 799),
+(5, 'Purse Bag', 'Bag', 1850),
+(6, 'Blue Jean', 'Jeans', 799),
+(7, 'White T-Shirt', 't-shirt', 350);
 
 -- --------------------------------------------------------
 
@@ -49,7 +60,7 @@ CREATE TABLE `product` (
   `quantity` int(11) NOT NULL,
   `preference` varchar(10) NOT NULL,
   `description` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `product`
@@ -62,7 +73,7 @@ INSERT INTO `product` (`id`, `name`, `category`, `price`, `quantity`, `preferenc
 (10, 'White T-Shirt', 't-shirt', 350, 5, 'male', 'size: L'),
 (11, 'Purse Bag', 'Bag', 1850, 4, 'female', 'size: small'),
 (12, 'Cambridge Shoes', 'shoes', 990, 10, 'male', 'Size: 7'),
-(13, 'Exported Full Shirt', 'Full-Shirt', 2500, 2, 'male', 'Size: L/XL');
+(13, 'Exported Full Shirt', 'Full-Shirt', 2530, 2, 'male', 'Size: L/XL');
 
 -- --------------------------------------------------------
 
@@ -76,16 +87,16 @@ CREATE TABLE `user` (
   `password` varchar(150) NOT NULL,
   `name` varchar(150) NOT NULL,
   `user_type` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `name`, `user_type`) VALUES
-(1, 'irazirfan@gmail.com', '123', 'Iraz Irfan', 'admin'),
-(3, 'alamin@aiub.edu', '123', 'Md. Al-Amin', 'customer'),
-(7, 'badhan@gmail.com', '123', 'Badhon', 'customer');
+(1, 'admin@gmail.com', 'admin123', 'Admin', 'admin'),
+(3, 'abrab@aiub.edu', 'abrab123', 'Syed Abrab', 'customer'),
+(7, 'irazirfan@gmail.com', 'iraz123', 'Iraz Irfan', 'customer');
 
 --
 -- Indexes for dumped tables
@@ -118,7 +129,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `product`
