@@ -1,51 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Add page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .nav-links {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .nav-links a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #007bff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .nav-links a {
+                display: block;
+                margin: 5px 0;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>Add Product</h1>
 
-<a href="/admin">Home</a> |
-<a href="/logout">Logout</a>
+    <h1>Add Product</h1>
 
-<form method="post">
-    <table>
-        <tr>
-            <td>Name: </td>
-            <td><input type="text" name="name" placeholder="Product Name"></td>
-        </tr>
-        <tr>
-            <td>Category: </td>
-            <td><input type="text" name="category" placeholder="Category"> </td>
-        </tr>
-        <tr>
-            <td>Price: </td>
-            <td><input type="text" name="price" placeholder="Price"></td>
-        </tr>
-        <tr>
-            <td>Quantity: </td>
-            <td><input type="number" name="quantity" placeholder="Quantity"></td>
-        </tr>
-        <tr>
-            <td>Preference: </td>
-            <td>
-                <select class="form-group" name="preference" id="preference">
-                <option type="text" value="">Select Preference</option>
-                <option type="text" value="male">male</option>
-                <option type="text" value="female">female</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>Description: </td>
-            <td><input type="text" name="description" placeholder="Description"> </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" name="submit" value="Add"> </td>
-        </tr>
-    </table>
-</form>
+    <div class="nav-links">
+        <a href="/admin">Home</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <form method="post">
+        <table>
+            <tr>
+                <td>Name: </td>
+                <td><input type="text" name="name" placeholder="Product Name"></td>
+            </tr>
+            <tr>
+                <td>Category: </td>
+                <td><input type="text" name="category" placeholder="Category"> </td>
+            </tr>
+            <tr>
+                <td>Price: </td>
+                <td><input type="text" name="price" placeholder="Price"></td>
+            </tr>
+            <tr>
+                <td>Quantity: </td>
+                <td><input type="number" name="quantity" placeholder="Quantity"></td>
+            </tr>
+            <tr>
+                <td>Preference: </td>
+                <td>
+                    <select class="form-group" name="preference" id="preference">
+                        <option value="">Select Preference</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Description: </td>
+                <td><input type="text" name="description" placeholder="Description"> </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" name="submit" value="Add"> </td>
+            </tr>
+        </table>
+    </form>
+
 </body>
 </html>

@@ -1,40 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>User List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .nav-links {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .nav-links a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #007bff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .nav-links a {
+                display: block;
+                margin: 5px 0;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-	<h1>User List</h1>
-	
-	<a href="/admin">Back</a> | 
-	<a href="/logout">Logout</a> 
 
-	<br>
-	<br>
+    <h1>User List</h1>
 
-	<table border="1">
-		<tr>
-			<td>Email</td>
-			<td>Password</td>
-			<td>Name</td>
-			<td>User Type</td>
-			<td>Action</td>
-		</tr>
+    <div class="nav-links">
+        <a href="/admin">Back</a>
+        <a href="/logout">Logout</a>
+    </div>
 
-		<% for(var i=0; i < userList.length; i++){ %>
+    <table>
+        <tr>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Name</th>
+            <th>User Type</th>
+            <th>Action</th>
+        </tr>
 
-		<tr>
-			<td><%= userList[i].email %></td>
-			<td><%= userList[i].password %></td>
-			<td><%= userList[i].name %></td>
-			<td><%= userList[i].user_type %></td>
-			<td>
-				<a href="/admin/delete/<%= userList[i].id %>">DELETE</a>
-			</td>
-		</tr>
-
-		<% } %>
-	</table>
+        <% for(var i=0; i < userList.length; i++){ %>
+            <tr>
+                <td><%= userList[i].email %></td>
+                <td><%= userList[i].password %></td>
+                <td><%= userList[i].name %></td>
+                <td><%= userList[i].user_type %></td>
+                <td>
+                    <a href="/admin/delete/<%= userList[i].id %>">DELETE</a>
+                </td>
+            </tr>
+        <% } %>
+    </table>
 
 </body>
 </html>

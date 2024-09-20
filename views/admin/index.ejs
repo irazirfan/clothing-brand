@@ -1,16 +1,100 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Home page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin: 20px 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 15px;
+            color: #007bff;
+            text-decoration: none;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+            min-width: 120px; /* Set a minimum width for buttons */
+            text-align: center;
+        }
+
+        .nav-links a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* New style for welcome link */
+        .welcome-link {
+            color: #007bff;
+            text-decoration: none;
+            border: 1px solid #007bff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+            margin-bottom: 20px; /* Add margin for spacing */
+        }
+
+        .welcome-link:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .nav-links {
+                flex-direction: column; /* Stack buttons vertically on smaller screens */
+                width: 100%;
+            }
+
+            .nav-links a {
+                width: 100%; /* Full width for buttons on small screens */
+            }
+        }
+    </style>
 </head>
 <body>
-	<h1>Home Page</h1>
-	<p>Welcome home,&nbsp;<a href="/profile"><%= locals.name %></a> </p>
 
-	<a href="/admin/add-product">Add Product</a> |
-	<a href="/admin/productList">Product List</a> |
-	<a href="/admin/add">Add Admin</a> |
-	<a href="/admin/user_list">User List</a> | 
-	<a href="/logout">Logout</a> 
+    <p>
+        Welcome home, 
+        <a href="/profile" class="welcome-link"><%= locals.name %></a>
+    </p>
+
+    <div class="nav-links">
+        <a href="/admin/add-product">Add Product</a>
+        <a href="/admin/productList">Product List</a>
+        <a href="/admin/add">Add Admin</a>
+        <a href="/admin/user_list">User List</a>
+        <a href="/logout">Logout</a>
+    </div>
 
 </body>
 </html>
