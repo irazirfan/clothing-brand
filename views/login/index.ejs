@@ -1,28 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Login page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            text-align: center;
+            width: 100%;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            form {
+                padding: 15px;
+            }
+
+            td {
+                display: block;
+                width: 100%;
+            }
+
+            input[type="submit"] {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-	<h1>LOGIN PAGE</h1>
-
-	<a href="/">Home</a>
-
-	<form method="post">
-		<table>
-			<tr>
-				<td>Email :</td>
-				<td><input type="text" name="email"></td>
-			</tr>
-			<tr>
-				<td>Password: </td>
-				<td><input type="password" name="password"></td>
-			</tr>
-			<tr>
-				<td><input type="submit" name="" value="Submit"></td>
-				<td></td>
-			</tr>
-		</table>
-	</form>
+    <form method="post">
+        <h1>LOGIN PAGE</h1>
+        <table>
+            <tr>
+                <td>Email :</td>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td>Password: </td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+        <a href="/">Home</a>
+    </form>
 </body>
 </html>
