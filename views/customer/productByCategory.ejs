@@ -1,36 +1,150 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+            margin-right: 15px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .nav-links {
+            margin-bottom: 20px;
+        }
+
+        .nav-links a {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            font-size: 16px;
+        }
+
+        td a {
+            background-color: #28a745;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        td a:hover {
+            background-color: #218838;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+
+            th, td {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            .nav-links a {
+                padding: 8px 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>Home Page</h1>
-<p>Welcome home,&nbsp;<a href="/profile"><%= locals.name %></a>  </p>
 
-<a href="/customer/category">Product Category</a> |
-<a href="/customer/cart">Cart</a> |
-<a  href="/logout">Logout</a>
+<h1>Home Page</h1>
+<p>Welcome home, <a href="/profile"><%= locals.name %></a></p>
+
+<div class="nav-links">
+    <a href="/customer/category">Product Category</a>
+    <a href="/customer/cart">Cart</a>
+    <a href="/logout">Logout</a>
+</div>
 
 <h3>Products By Category</h3>
-<table border="1">
+
+<table>
     <tr>
-        <td>Name</td>
-        <td>Category/Preference</td>
-        <td>Price</td>
-        <td>Action</td>
+        <th>Name</th>
+        <th>Category/Preference</th>
+        <th>Price</th>
+        <th>Action</th>
     </tr>
 
     <% for(var i=0; i < productList.length; i++){ %>
-
-        <tr>
-            <td><%= productList[i].name %></td>
-            <td><%= productList[i].category %></td>
-            <td><%= productList[i].price %></td>
-            <td>
-                <a href="/customer/cart/<%= productList[i].id %>">Add to Cart</a>
-            </td>
-        </tr>
-
+    <tr>
+        <td><%= productList[i].name %></td>
+        <td><%= productList[i].category %></td>
+        <td><%= productList[i].price %></td>
+        <td><a href="/customer/cart/<%= productList[i].id %>">Add to Cart</a></td>
+    </tr>
     <% } %>
+
 </table>
 
 </body>

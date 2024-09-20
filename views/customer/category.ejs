@@ -1,23 +1,109 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Home page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Category</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+            padding: 8px 15px;
+            margin: 5px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        /* Style for the main navigation links */
+        .nav-links {
+            margin-bottom: 30px;
+        }
+
+        .nav-links a {
+            margin-right: 10px;
+        }
+
+        /* Style for the category links */
+        .category-links a {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1, h3 {
+                font-size: 28px;
+            }
+
+            a {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>Home Page</h1>
-<p>Welcome home,&nbsp;<a href="/profile"><%= locals.name %></a>  </p>
 
-<a href="/customer">All Products</a> |
-<a href="/customer/cart">Cart</a> |
-<a  href="/logout">Logout</a>
+<p>Welcome home, <a href="/profile"><%= locals.name %></a></p>
 
-<br/><br/>
+<div class="nav-links">
+    <a href="/customer">All Products</a>
+    <a href="/customer/cart">Cart</a>
+    <a href="/logout">Logout</a>
+</div>
+
 <h3>By Preference</h3>
-<a href="/customer/male-product">Men</a>
-<a href="/customer/female-product">Women</a>
+<div class="category-links">
+    <a href="/customer/male-product">Men</a>
+    <a href="/customer/female-product">Women</a>
+</div>
 
 <h3>By Category</h3>
-<% for(var i=0; i < categoryList.length; i++){ %>
-<a href="/customer/productByCategory/<%=categoryList[i].category%>"><%=categoryList[i].category%></a> &nbsp; |
-<% } %>
+<div class="category-links">
+    <% for(var i=0; i < categoryList.length; i++){ %>
+    <a href="/customer/productByCategory/<%=categoryList[i].category%>"><%=categoryList[i].category%></a>
+    <% } %>
+</div>
 
 </body>
+</html>

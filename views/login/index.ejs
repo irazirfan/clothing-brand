@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login page</title>
+    <title>Login Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -53,23 +53,31 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            width: 100%;
         }
 
         input[type="submit"]:hover {
             background-color: #0056b3;
         }
 
-        a {
-            display: inline-block;
+        .nav-links {
             margin-top: 15px;
             text-align: center;
-            width: 100%;
-            color: #007BFF;
-            text-decoration: none;
         }
 
-        a:hover {
-            text-decoration: underline;
+        .nav-links a {
+            display: inline-block;
+            color: #007BFF;
+            text-decoration: none;
+            padding: 10px 15px;
+            border: 1px solid #007BFF;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #007BFF;
+            color: white;
         }
 
         /* Responsive adjustments */
@@ -105,7 +113,9 @@
                 <td colspan="2"><input type="submit" value="Submit"></td>
             </tr>
         </table>
-        <a href="/">Home</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+        </div>
     </form>
 </body>
 </html>

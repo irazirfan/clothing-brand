@@ -1,36 +1,150 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+            padding: 8px 15px;
+            margin: 5px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        /* Style for the table */
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin-bottom: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            font-size: 18px;
+        }
+
+        td {
+            font-size: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .add-to-cart {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .add-to-cart:hover {
+            color: white;
+            background-color: #28a745;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1, h3 {
+                font-size: 28px;
+            }
+
+            table {
+                width: 100%;
+            }
+
+            a {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>Home Page</h1>
-<p>Welcome home,&nbsp;<a href="/profile"><%= locals.name %></a>  </p>
 
-<a href="/customer/category">Product Category</a> |
-<a href="/customer/cart">Cart</a> |
-<a  href="/logout">Logout</a>
+<h1>Home Page</h1>
+<p>Welcome home, <a href="/profile"><%= locals.name %></a></p>
+
+<a href="/customer/category">Product Category</a>
+<a href="/customer/cart">Cart</a>
+<a href="/logout">Logout</a>
 
 <h3>Male Products</h3>
-<table border="1">
-    <tr>
-        <td>Name</td>
-        <td>Category/Preference</td>
-        <td>Price</td>
-        <td>Action</td>
-    </tr>
-
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category/Preference</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
     <% for(var i=0; i < productList.length; i++){ %>
-
         <tr>
             <td><%= productList[i].name %></td>
             <td><%= productList[i].category %></td>
-            <td><%= productList[i].price %></td>
+            <td>$<%= productList[i].price %></td>
             <td>
-                <a href="/customer/cart/<%= productList[i].id %>">Add to Cart</a>
+                <a class="add-to-cart" href="/customer/cart/<%= productList[i].id %>">Add to Cart</a>
             </td>
         </tr>
-
     <% } %>
+    </tbody>
 </table>
 
 </body>
