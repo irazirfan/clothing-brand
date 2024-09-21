@@ -28,6 +28,9 @@ router.post('/', function(req, res){
     };
     user.updateByEmail(data,function(status){
         if(status){
+            // update session with new name to reflect changes immediately
+            req.session.name = req.body.name;
+
             if(req.session.user_type ==='admin')
                 res.redirect('/admin');
             else{
