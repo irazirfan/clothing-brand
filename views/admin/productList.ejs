@@ -73,6 +73,18 @@
             color: white;
         }
 
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            white-space: nowrap; /* Prevents text from wrapping inside the cell */
+        }
+
+        td a {
+            display: inline-block;
+            margin-right: 5px; /* Adds space between Edit and Delete buttons */
+        }
+
         /* Responsive adjustments */
         @media (max-width: 600px) {
             table {
@@ -81,6 +93,10 @@
             }
             th, td {
                 padding: 10px;
+            }
+            td a {
+                display: block;
+                margin-bottom: 5px; /* Stack buttons vertically on smaller screens */
             }
         }
     </style>
